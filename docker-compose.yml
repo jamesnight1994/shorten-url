@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+  app:
+    image: url-shortener
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+      - "5555:5555"
+    env_file:
+      - .env
+    # volumes:
+    #   - ./:/usr/src/app
+    depends_on:
+      - postgres
+    command: >
+      sh -c "npm run start:prod && npx prisma db push && npx prisma studio"
