@@ -57,14 +57,14 @@ Before setting up the application, make sure you have the following installed:
 # PART 2
 
 ## 1. **Code Review and Refactoring:**
-    - Use dependency injection to inject `MD5Utils.generateRandomShortUrl(data.url);` rather than instantiating it within the method `shortenUrl()`.
-MD5 shortening algorithm class might be replaced with another algorithm class in the future.
-    - Create a `private function saveUrl(destination: string, shortUrl: string)` that stores the url if it was not found. In order to separate **"url shortening"**  and **"saving"**.
-    - Move url validation logic to the `class UrlDto` & utilize the `class-validator` class.
+- Use dependency injection to inject `MD5Utils generateRandomShortUrl(data.url);` rather than instantiating it within the method `shortenUrl()`.MD5 shortening algorithm class might be replaced with another algorithm class in the future.
+    
+- Create a `private function saveUrl(destination: string, shortUrl: string)` that stores the url if it was not found. In order to separate **"url shortening"**  and **"saving"**.
+- Move url validation logic to the `class UrlDto` & utilize the `class-validator` class.
 Centralize URL validation logic.
-    - Centralize error handling. Also Include error handling in the function `getDestination(shortUrl: string)`
+- Centralize error handling. Also Include error handling in the function `getDestination(shortUrl: string)`
 
-    - [link to the comments and code PR](https://github.com/jamesnight1994/shorten-url/pull/1)
+- [link to the comments and code PR](https://github.com/jamesnight1994/shorten-url/pull/1)
 
 ## 2. **System Scalability Analysis:**
 
